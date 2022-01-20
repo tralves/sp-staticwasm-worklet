@@ -59,7 +59,7 @@ EMSCRIPTEN_KEEPALIVE void processSample(float* input, float *output, int buffers
 }
 
 EMSCRIPTEN_KEEPALIVE void processWhiteNoiseSP(float* input, float *output, int buffersize) {
-    noiseGenerator->generate(output, buffersize / 2);
+    noiseGenerator->generate(output, buffersize);
 }
 
 EMSCRIPTEN_KEEPALIVE void processWhiteNoise(float* input, float *output, int buffersize) {
@@ -74,7 +74,7 @@ EMSCRIPTEN_KEEPALIVE void processWhiteNoise(float* input, float *output, int buf
 }
 
 EMSCRIPTEN_KEEPALIVE void processSound(float* input, float *output, int buffersize) {
-    soundGenerator->generate(output, buffersize / 2);
+    soundGenerator->generate(output, buffersize);
 }
 
 

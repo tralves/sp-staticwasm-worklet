@@ -167,43 +167,35 @@ class SPProcessor extends AudioWorkletProcessor {
 
   process(inputs, outputs, parameters) {
     if (!this.wasmInitialized || !this.samplesLoaded) return true;
-    const output = outputs[0];
-    output.forEach((channel) => {
-      if (inputs[0].length > 1) this.bufferToWASM(this.inputBuffer, inputs);
-      // this.processAudio(this.inputBuffer, this.outputBuffer, this.inputBuffer.array.length / 2, parameters);
-      switch (this.mode) {
-        case 'feedback':
-          this.processFeedback(this.inputBuffer.pointer, this.outputBuffer.pointer, channel.length * 2);
-        break;
-        case 'reverb':
-          this.processReverb(this.inputBuffer.pointer, this.outputBuffer.pointer, channel.length * 2);
-        break;
-        case 'sample':
-          this.processSample(this.inputBuffer.pointer, this.outputBuffer.pointer, channel.length * 2);
-        break;
-        case 'pink-noise':
-          this.processWhiteNoise(this.inputBuffer.pointer, this.outputBuffer.pointer, channel.length * 2);
-        break;
-        case 'pink-noise-sp':
-          this.processWhiteNoiseSP(this.inputBuffer.pointer, this.outputBuffer.pointer, channel.length * 2);
-        break;
-        case 'sound':
-          this.processSound(this.inputBuffer.pointer, this.outputBuffer.pointer, channel.length * 2);
-        break;
-      
-        default:
-          break;
-      }
-      
-      // for (let i = 0; i < this.inputBuffer.array.length; i++) {
-      //   this.outputBuffer.array[i] = this.inputBuffer.array[i];
 
-      // }
-      if (outputs[0].length > 1) this.bufferToJS(this.outputBuffer, outputs);
-      // for (let i = 0; i < channel.length; i++) {
-      //   channel[i] = this.module?.randomNoise() ?? 0;
-      // }
-    });
+    if (inputs[0].length > 1) this.bufferToWASM(this.inputBuffer, inputs);
+
+    switch (this.mode) {
+      case 'feedback':
+        this.processFeedback(this.inputBuffer.pointer, this.outputBuffer.pointer, 256);
+      break;
+      case 'reverb':
+        this.processReverb(this.inputBuffer.pointer, this.outputBuffer.pointer, 256);
+      break;
+      case 'sample':
+        this.processSample(this.inputBuffer.pointer, this.outputBuffer.pointer, 256);
+      break;
+      case 'pink-noise':
+        this.processWhiteNoise(this.inputBuffer.pointer, this.outputBuffer.pointer, 256);
+      break;
+      case 'pink-noise-sp':
+        this.processWhiteNoiseSP(this.inputBuffer.pointer, this.outputBuffer.pointer, 256);
+      break;
+      case 'sound':
+        this.processSound(this.inputBuffer.pointer, this.outputBuffer.pointer, 256);
+      break;
+    
+      default:
+        break;
+    }
+    
+    if (outputs[0].length > 1) this.bufferToJS(this.outputBuffer, outputs);
+
     return true;
   }
 
