@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Superpowered Static WASM Include Demo</title>
+</head>
+<body>
+    <button id="test-feedback" onclick="window.sp.testFeedback()">Test Loopback (no effects)</button>
+    <button id="test-reverb" onclick="window.sp.testReverb()">Test Loopback with Reverb</button>
+    <button id="test-sample" onclick="window.sp.testSample()">Test Sample</button>
+    <button id="test-whitenoise" onclick="window.sp.testWhiteNoise()">Test white Noise (No SP)</button>
+    <button id="test-whitenoisesp" onclick="window.sp.testWhiteNoiseSP()">Test white Noise (with SP)</button>
+    <button id="test-sound" onclick="window.sp.testSound()">Test Generated sound</button>
+    <button id="start" onclick="window.sp.start()" style="display: none;">start</button>
+    <button id="stop" onclick="window.sp.stop()" style="display: none;">stop</button>
+    <div>
+        <pre id="output"></pre>
+    </div>
+    <script src="main.js" type="module"></script>
+</body>
+</html>
