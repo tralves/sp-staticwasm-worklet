@@ -12,7 +12,7 @@ It includes the following tests:
 5. White noise with `Superpowered::Generator`;
 6. Generating a sound with `Superpowered::Generator`;
 
-The result is that all Superpowered tests (2, 3, 5, and 6) cause some noise.
+The result is that every test that uses Superpowered (2, 3, 5, and 6) cause some noise. 😤😤😤😤😤
 
 ## Running this example project:
 
