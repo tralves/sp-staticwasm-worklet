@@ -10,7 +10,7 @@
 // #include <emscripten/bind.h>
 
 static Superpowered::Reverb *reverb = NULL;
-static unsigned int playersCount = 16;
+static unsigned int playersCount = 20;
 static Superpowered::AdvancedAudioPlayer *players[100];
 static Superpowered::Generator *noiseGenerator;
 static Superpowered::Generator *soundGenerator;
