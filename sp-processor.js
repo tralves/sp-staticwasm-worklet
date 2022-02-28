@@ -170,24 +170,29 @@ class SPProcessor extends AudioWorkletProcessor {
 
     if (inputs[0].length > 1) this.bufferToWASM(this.inputBuffer, inputs);
 
+    const frameSize = 256;
+
     switch (this.mode) {
       case 'feedback':
-        this.processFeedback(this.inputBuffer.pointer, this.outputBuffer.pointer, 256);
+        this.processFeedback(this.inputBuffer.pointer, this.outputBuffer.pointer, frameSize);
       break;
       case 'reverb':
-        this.processReverb(this.inputBuffer.pointer, this.outputBuffer.pointer, 256);
+        this.processReverb(this.inputBuffer.pointer, this.outputBuffer.pointer, frameSize);
       break;
       case 'sample':
-        this.processSample(this.inputBuffer.pointer, this.outputBuffer.pointer, 256);
+        this.processSample(this.inputBuffer.pointer, this.outputBuffer.pointer, frameSize);
+      break;
+      case 'sampleperf':
+        this.processSamplePerformance(this.inputBuffer.pointer, this.outputBuffer.pointer, frameSize);
       break;
       case 'pink-noise':
-        this.processWhiteNoise(this.inputBuffer.pointer, this.outputBuffer.pointer, 256);
+        this.processWhiteNoise(this.inputBuffer.pointer, this.outputBuffer.pointer, frameSize);
       break;
       case 'pink-noise-sp':
-        this.processWhiteNoiseSP(this.inputBuffer.pointer, this.outputBuffer.pointer, 256);
+        this.processWhiteNoiseSP(this.inputBuffer.pointer, this.outputBuffer.pointer, frameSize);
       break;
       case 'sound':
-        this.processSound(this.inputBuffer.pointer, this.outputBuffer.pointer, 256);
+        this.processSound(this.inputBuffer.pointer, this.outputBuffer.pointer, frameSize);
       break;
     
       default:

@@ -18,7 +18,7 @@ em++ \
 -s ENVIRONMENT="shell" \
 -s BINARYEN_ASYNC_COMPILATION=0 \
 -s ALLOW_MEMORY_GROWTH=1 \
--s INITIAL_MEMORY="32MB" \
+-s INITIAL_MEMORY="128MB" \
 -O1 -g0 \
 -o spmodule.js
 

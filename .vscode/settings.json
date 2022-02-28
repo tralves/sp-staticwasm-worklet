@@ -19,6 +19,7 @@
         "__tuple": "cpp",
         "ctime": "cpp",
         "ratio": "cpp",
-        "utility": "cpp"
+        "utility": "cpp",
+        "stack": "cpp"
     }
 }

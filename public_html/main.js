@@ -56,6 +56,24 @@ async function testSample() {
     };
 }
 
+async function testSamplePerf() {
+    await createSPAudioNode('sampleperf');
+    spworklet.port.onmessage = async message => {
+        console.log('MAIN:', message.data);
+        switch (message.data.type) {
+            case 'ready':
+                const samples = await loadSamples();
+                spworklet.port.postMessage({type: 'setSamples', samples});
+                initialized();
+                break;
+        
+            default:
+                break;
+        }
+    };
+}
+
+
 async function testWhiteNoise() {
     await createSPAudioNode('pink-noise');
     initialized();
@@ -74,6 +92,7 @@ async function initialized() {
     window.document.getElementById('test-feedback').style.display = 'none';
     window.document.getElementById('test-reverb').style.display = 'none';
     window.document.getElementById('test-sample').style.display = 'none';
+    window.document.getElementById('test-sampleperf').style.display = 'none';
     window.document.getElementById('test-whitenoise').style.display = 'none';
     window.document.getElementById('test-whitenoisesp').style.display = 'none';
     window.document.getElementById('test-sound').style.display = 'none';
@@ -122,6 +141,7 @@ window.sp = {
     testFeedback,
     testReverb,
     testSample,
+    testSamplePerf,
     start,
     stop
 };
